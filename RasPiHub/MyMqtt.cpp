@@ -17,11 +17,6 @@ MyMqtt::~MyMqtt()
 void MyMqtt::on_connect(int rc)
 {
 	printf("Connected with code %d.\n", rc);	// Prints connection code. Should be 0
-	if(rc == 0)	// Sucess
-	{
-                /* Only attempt to subscribe on a successful connect. */
-                subscribe(NULL, "Hub/#");	// Subscribe to all Hub messages
-	}
 }
 
 void MyMqtt::on_message(const struct mosquitto_message *message)
