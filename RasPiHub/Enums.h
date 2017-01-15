@@ -13,9 +13,9 @@ public:
         };
         enum MessageType
         {
-                REP = 'A', // Reporting - Report Current Status
-                COM = 'B',      // Command - Issue a command
-                VER = 'C'       // Verify - Getting the type of node
+                REP = 0, // Reporting - Report Current Status
+                COM = 1,      // Command - Issue a command
+                VER = 2       // Verify - Getting the type of node
         };
 };
 #endif

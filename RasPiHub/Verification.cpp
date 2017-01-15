@@ -1,10 +1,28 @@
 #include "Verification.h"
 
-Enums::ClassType type;
-std::string id;
+const char * msg;
+const char * encodedMessage;
+Enums::ClassType clsType;
+Enums::MessageType msgType;
 
-Verification::Verification(std::string _id, Enums::ClassType _type)
+Verification::Verification(const char _msg[], Enums::ClassType _clsType, Enums::MessageType _msgType)
 {
-        type = _type;
-        id = _id;
+	clsType = _clsType;
+        msgType = _msgType;
+        msg = _msg;
+}
+Verification::Verification(const char _encodedMessage[])
+{
+	encodedMessage = _encodedMessage;
+}
+void Verification::Encode()
+{
+	char temp[51];
+	sprintf(temp,"%d:%d:%s",clsType,msgType,msg);
+	encodedMessage = temp;
+
+}
+void Verification::Decode()
+{
+	
 }
