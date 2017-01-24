@@ -2,8 +2,9 @@
 #include "Verification.h"
 //#include <string.h>
 
+#include <string.h>
 /*used for debugging*/
-//#include <stdio.h>
+#include <stdio.h>
 
 //Define global tokens
 #define ID	"Hub"
@@ -26,9 +27,14 @@ int main(int argc, char *argv[])
 	{
 		mqtt->subscribe(NULL, LISTEN);	// Subscribe to all incoming hub messages
 	}
-	Verification ver = Verification("Here is the message", Enums::THERMOSTAT, Enums::REP);
-	ver.Encode();
-//	mqtt->publish(NULL, "Hub/Outgoing", sizeof(ver.encodedMessage), ver.encodedMessage);
+	Verification ver = Verification("testMessage", Enums::THERMOSTAT, Enums::REP);
+
+//	Verification ver = Verification("testMessage", Enums::THERMOSTAT, Enums::REP);
+//	or
+//	char test[] = {"1:1:test Message"};
+//	Verification ver = Verification(test);
+
+	mqtt->publish(NULL, "Hub/Outgoing", strlen(ver.encodedMessage), ver.encodedMessage);
 
 	while(1){
 		rc = mqtt->loop();	// Set rc to be the return value of the mosquitto_loop

@@ -2,9 +2,8 @@
 #define VERIFICATION_H
 
 #include <stdio.h>
-//#include <string.h>
-//#include <sstream>
-//#include <vector>
+#include <string.h>
+#include <stdlib.h>
 #include "Enums.h"
 
 class Verification
@@ -12,14 +11,14 @@ class Verification
 public:
 	const char * msg;
 	const char * encodedMessage;
+	char temp[51];
+
 	Enums::ClassType clsType;
 	Enums::MessageType msgType;
 
 	Verification(const char[], Enums::ClassType, Enums::MessageType);
-	Verification(const char[]);
+	Verification(char[]);
 	void Encode();
 	void Decode();
-//        void Split(const std::string, char, std::vector<std::string>);
-//        void Split(const std::string, char);
 };
 #endif
