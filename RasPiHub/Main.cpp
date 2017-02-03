@@ -1,7 +1,7 @@
 #include "MyMqtt.h"
 #include "Verification.h"
 //#include <string.h>
-
+#include "MeshNet.h"
 #include <string.h>
 /*used for debugging*/
 #include <stdio.h>
@@ -16,6 +16,8 @@
 
 int main(int argc, char *argv[])
 {
+	MeshNet meshNet = MeshNet(0);
+//	meshN.Setup(1);
 	class MyMqtt *mqtt;	// Declare MyMqtt class
 	int rc;	// Used for deternining if a reconnection is required
 
@@ -28,7 +30,7 @@ int main(int argc, char *argv[])
 		mqtt->subscribe(NULL, LISTEN);	// Subscribe to all incoming hub messages
 	}
 	Verification ver = Verification("testMessage", Enums::THERMOSTAT, Enums::REP);
-
+	meshNet.Write(ver.encodedMessage, 'M', 1);
 //	Verification ver = Verification("testMessage", Enums::THERMOSTAT, Enums::REP);
 //	or
 //	char test[] = {"1:1:test Message"};
